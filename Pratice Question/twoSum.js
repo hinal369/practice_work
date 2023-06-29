@@ -29,7 +29,19 @@ const twoSum = (nums, target) => {
     }
 };
 
-const nums = [2,5,5,11]
-const target = 10
+// var twoSum = function(nums, target) {
+//     let mp = new Map()
+//     for (let i = 0; i < nums.length; i++) {
+//         let diff = target - nums[i]
+//         if (mp.has(diff)) {
+//             return [i, mp.get(diff)]
+//         }
+        
+//         mp.set(nums[i], i)
+//     }
+// };
+
+const nums = [2, 7, 11, 15]
+const target = 9
 console.log(twoSum(nums, target))
 
