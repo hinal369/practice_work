@@ -59,25 +59,55 @@
 
 // Method 3 :
 var longestPalindrome = function(s) {
-    let l = parseInt(s.length/2);
-    for (let i = 0; i < l; i++) {
-        let start = 0;
-        let end = s.length - 1;
+    // for (let i = 0; i < s.length; i++) {
+    //     let start = i;
+    //     let end = s.length - 1;
+    //     let half = parseInt((s.length - i )/ 2);
 
-        while( start < l && end >= l) {
-            if (s.charAt(start) === s.charAt(end)) {
-                console.log("true");
-            } else {
-                console.log("False");
-            }
-            start++;
-            end--;
+    //     while(start < half && end >= half && s[start] === s[end]) {
+    //         start++;
+    //         end--;
+    //     }
+
+    //     return s.slice(start + 1, end);
+    // }
+
+    let longest = '';
+
+    for (let i = 0; i < s.length; i++) {
+        // Check for odd-length palindromes
+        let oddPalindrome = expandFromCenter(s, i, i);
+        if (oddPalindrome.length > longest.length) {
+        longest = oddPalindrome;
+        }
+
+        // Check for even-length palindromes
+        let evenPalindrome = expandFromCenter(s, i, i + 1);
+        if (evenPalindrome.length > longest.length) {
+        longest = evenPalindrome;
         }
     }
+
+    return longest;
 }
 
+function expandFromCenter(s, left, right) {
+    console.log("-------------Left------------------------------");
+
+    while (left >= 0 && right < s.length && s[left] === s[right]) {
+        console.log(`Left : ${left}, Left Char : ${s[left]}`);
+        console.log(`Right : ${right}, Right Char : ${s[right]}`);
+        console.log("----------------------------------------");
+      left--;
+      right++;
+    }
+
+  
+    // Return the palindrome substring
+    return s.slice(left + 1, right);
+}
 
 // console.log(longestPalindrome("civilwartestingwhetherthatnaptionoranynartionsoconceivedandsodedicatedcanlongendureWeareqmetonagreatbattlefiemldoftzhatwarWehavecometodedicpateaportionofthatfieldasafinalrestingplaceforthosewhoheregavetheirlivesthatthatnationmightliveItisaltogetherfangandproperthatweshoulddothisButinalargersensewecannotdedicatewecannotconsecratewecannothallowthisgroundThebravelmenlivinganddeadwhostruggledherehaveconsecrateditfaraboveourpoorponwertoaddordetractTgheworldadswfilllittlenotlenorlongrememberwhatwesayherebutitcanneverforgetwhattheydidhereItisforusthelivingrathertobededicatedheretotheulnfinishedworkwhichtheywhofoughtherehavethusfarsonoblyadvancedItisratherforustobeherededicatedtothegreattdafskremainingbeforeusthatfromthesehonoreddeadwetakeincreaseddevotiontothatcauseforwhichtheygavethelastpfullmeasureofdevotionthatweherehighlyresolvethatthesedeadshallnothavediedinvainthatthisnationunsderGodshallhaveanewbirthoffreedomandthatgovernmentofthepeoplebythepeopleforthepeopleshallnotperishfromtheearth"));
 
 // console.log(longestPalindrome("zudfweormatjycujjirzjpyrmaxurectxrtqedmmgergwdvjmjtstdhcihacqnothgttgqfywcpgnuvwglvfiuxteopoyizgehkwuvvkqxbnufkcbodlhdmbqyghkojrgokpwdhtdrwmvdegwycecrgjvuexlguayzcammupgeskrvpthrmwqaqsdcgycdupykppiyhwzwcplivjnnvwhqkkxildtyjltklcokcrgqnnwzzeuqioyahqpuskkpbxhvzvqyhlegmoviogzwuiqahiouhnecjwysmtarjjdjqdrkljawzasriouuiqkcwwqsxifbndjmyprdozhwaoibpqrthpcjphgsfbeqrqqoqiqqdicvybzxhklehzzapbvcyleljawowluqgxxwlrymzojshlwkmzwpixgfjljkmwdtjeabgyrpbqyyykmoaqdambpkyyvukalbrzoyoufjqeftniddsfqnilxlplselqatdgjziphvrbokofvuerpsvqmzakbyzxtxvyanvjpfyvyiivqusfrsufjanmfibgrkwtiuoykiavpbqeyfsuteuxxjiyxvlvgmehycdvxdorpepmsinvmyzeqeiikajopqedyopirmhymozernxzaueljjrhcsofwyddkpnvcvzixdjknikyhzmstvbducjcoyoeoaqruuewclzqqqxzpgykrkygxnmlsrjudoaejxkipkgmcoqtxhelvsizgdwdyjwuumazxfstoaxeqqxoqezakdqjwpkrbldpcbbxexquqrznavcrprnydufsidakvrpuzgfisdxreldbqfizngtrilnbqboxwmwienlkmmiuifrvytukcqcpeqdwwucymgvyrektsnfijdcdoawbcwkkjkqwzffnuqituihjaklvthulmcjrhqcyzvekzqlxgddjoir"));
-console.log(longestPalindrome("babaad"))
+console.log(longestPalindrome("babaab"))
