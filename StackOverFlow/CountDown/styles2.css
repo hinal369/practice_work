@@ -1,0 +1,9 @@
+.countup .sep {
+    display: inline-block;
+    padding: 50px;
+    background: rgba(0, 128, 128, 0.707);
+    margin: 0;
+    color: rgb(0, 0, 0);
+    min-width: 2.6rem;
+    border-radius: 10px;
+}
