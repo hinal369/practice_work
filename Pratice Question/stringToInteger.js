@@ -29,35 +29,46 @@
  
 */
 
-var myAtoi = (s) => {
-    let newString = ""
-    s = s.trim();
-    for (let i = 0; i < s.length; i++) {
-        if (isNaN(s[i]) || hasWhiteSpace(s[i])) {
-            if (i != 0 && (s[i] != "+" || s[i] != "-")) { 
-                break;
-            }
+// var myAtoi = (s) => {
+//     let newString = ""
+//     s = s.trim();
+//     for (let i = 0; i < s.length; i++) {
+//         if (isNaN(s[i]) || hasWhiteSpace(s[i])) {
+//             if (i != 0 && (s[i] != "+" || s[i] != "-")) { 
+//                 break;
+//             }
                 
-        }
-        newString += s[i];
-    }
-    const number = Number(newString);
+//         }
+//         newString += s[i];
+//     }
+//     const number = Number(newString);
+//     if (number > 0x7FFFFFFF || number < -0x7FFFFFFF) {
+//         return number > 0 ? Math.pow(2, 31) - 1 :  Math.pow(-2, 31);
+//     }
+//     return isNaN(number) ? 0 : number;
+// };
+
+// function hasWhiteSpace(s) {
+//     return s.indexOf(' ') >= 0;
+// }
+
+// function myAtoi(s) {
+//     return Math.min(Math.pow(2,31)-1 , Math.max(parseInt(s.match(/^\s*([-+]?\d+)/)?.[1] ?? "0", 10), -Math.pow(2,31)))
+// };
+
+const myAtoi = (s) => {
+    const number = parseInt(s)
     if (number > 0x7FFFFFFF || number < -0x7FFFFFFF) {
         return number > 0 ? Math.pow(2, 31) - 1 :  Math.pow(-2, 31);
     }
     return isNaN(number) ? 0 : number;
-};
-
-function hasWhiteSpace(s) {
-    return s.indexOf(' ') >= 0;
 }
-
 // const s = "4193 with words";
 // const s = "   -42";
 // const s = "42";
 // const s = "+-12";
 // const s = "+";
 // const s = "00000-42a1234";
-const s = "    -88827   5655  U"
+// const s = "    -88827   5655  U"
 console.log(myAtoi(s));
 
