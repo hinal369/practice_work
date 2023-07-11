@@ -22,7 +22,7 @@
 
 var isPalindrome = function(x) {
     const reverseSting = String(x).split("").reverse().join("");
-    return String(x) === reverseSting ? true : false
+    return String(x) === reverseSting
 };
 
 // const x = 121;
